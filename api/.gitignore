@@ -1,0 +1,6 @@
+# Directorios
+__pycache__/
+migrations/__pycache__/
+
+# Archivos
+__init__.py
