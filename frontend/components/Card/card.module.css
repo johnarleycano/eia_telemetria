@@ -1,0 +1,21 @@
+.main {
+    width: 200px;
+    height: 100px;
+    border: 2px solid gray;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon {
+    color: red;
+    font-size: 50px;
+}
+
+.datos {
+    color: red;
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+}
