@@ -1,4 +1,5 @@
 # Directorios
 
 # Archivos
+.vscode/
 db.sqlite3
