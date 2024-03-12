@@ -1,9 +1,14 @@
 #include <WiFi.h>
 #include <Arduino.h>
 #include <PubSubClient.h>
+#include <DHT.h>
+
+#define DHTPIN 15
+#define DHTTYPE DHT11
 
 WiFiClient espClient;
 PubSubClient client(espClient);
+DHT dht(DHTPIN, DHTTYPE);
 
 // const char* ssid          = "DEVIMED_TICs";
 // const char* password      = "*DevimeD*";
@@ -29,7 +34,6 @@ void recibirMensaje(char* topic, byte* payload, unsigned int length) {
     Serial.println(topico);
     Serial.println(mensaje);
 }
-
 
 void reconectar() {
   	while (!client.connected()) {
@@ -69,12 +73,31 @@ void setup() {
     }
     Serial.println("Conectado.");
 
+    dht.begin();
+
     client.setServer(mqtt_servidor, mqtt_puerto);
     client.setCallback(recibirMensaje);
     // client.setKeepAlive(30);
 }
 
 void loop() {
+    delay(2500);
+    
+    float temperatura = dht.readTemperature();
+
+    // Si se obtiene error al leer
+    if(isnan(temperatura)) {
+        Serial.println("Error leyendo");
+        return;
+    }
+
+    Serial.print("Temperatura: ");
+    Serial.println(temperatura);
+
+    char msg_out[20];
+    dtostrf(temperatura,5,2,msg_out);
+    client.publish(topicoTemperatura, msg_out);
+
     // Si el cliente no se conectó, se intenta nuevamente
   	if (!client.connected()) reconectar();
   	
