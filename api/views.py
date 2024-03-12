@@ -94,3 +94,32 @@ class Dispositivos_Metodo(APIView):
         dispositivo.delete()
 
         return Response(status=status.HTTP_200_OK)
+    
+class Puntos_Metodo(APIView):
+    def post(self, request):
+        # Datos que va a tomar mediante POST
+        valor = request.data['valor']
+        dispositivo_id = request.data['dispositivo_id']
+
+        # Creación
+        Puntos.objects.create(valor=valor, dispositivo_id=dispositivo_id)
+
+        return Response(status=status.HTTP_201_CREATED)
+    
+    def get(self, request, id):
+        # Se obtienen los registros
+        puntos = Puntos.objects.filter(id=id)
+        
+        # Aquí se almacenará los datos
+        listaPuntos = []
+
+        # Serialización rápida de los datos
+        listaPuntos = PuntosSerializador(puntos, many=True).data
+
+        return Response({"error": False, "datos": listaPuntos}, status=status.HTTP_200_OK)
+    
+    def delete(self, request, id):
+        punto = Puntos.objects.get(id=id)
+        punto.delete()
+
+        return Response(status=status.HTTP_200_OK)
