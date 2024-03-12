@@ -1,0 +1,6 @@
+# Directorios
+backend/__pycache__/
+
+# Archivos
+backend/__init__.py
+db.sqlite3
