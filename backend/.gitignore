@@ -1,4 +1,6 @@
 # Directorios
+__pycache__/
 
 # Archivos
+__init__.py
 db.sqlite3
