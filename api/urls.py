@@ -1,9 +1,8 @@
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import status
+from django.urls import path
 
 from . import views
 
 urlpatterns = [
-    
+    path("ubicaciones", views.Ubicaciones_Metodo.as_view(), name="Ubicaciones"),
+    path("ubicaciones/<int:id>", views.Ubicaciones_Metodo.as_view(), name="Ubicacion"),
 ]
