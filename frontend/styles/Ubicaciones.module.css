@@ -1,0 +1,51 @@
+.main {
+    width: 100%;
+    height: 100vh;
+    background-color: #f9fbf2;
+}
+  
+.titulo_pagina {
+    font-family: "Roboto";
+    font-size: 30px;
+    position: absolute;
+    top: 150px;
+    left: 150px;
+}
+
+.body_table {
+    border: 1px solid grey;
+    border-radius: 10px;
+    position: absolute;
+    top: 200px;
+    left: 150px;
+    width: 50%;
+    height: 400px;
+    background-color: #fff;
+    overflow-y: scroll;
+
+}
+
+.row_header {
+    background-color: #8c271e;
+    border-radius: 10px 10px 0 0;
+    display: flex;
+    font-display: wrap;
+    height: 50px;
+    padding: 10px;
+    width: 100%;
+}
+
+.cell_header {
+    align-items: center;
+    color: white;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    font-family: "Roboto";
+    font-size: 1.2em;
+    width: 25%;
+}
+
+.icono {
+    cursor: pointer;
+}
